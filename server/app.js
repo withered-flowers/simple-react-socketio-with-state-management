@@ -34,6 +34,14 @@ io.on("connection", (socket) => {
 		);
 	});
 
+	// ! Note: di sini akan menerima 1 argument dari client
+	socket.on("form-submission", (arg0) => {
+		const panjangKata = arg0?.length ?? 0;
+
+		console.log("Data from client", arg0);
+		socket.emit("form-submission-response", panjangKata);
+	});
+
 	socket.on("disconnect", (reason) => {
 		console.log(`User ${socket.id} disconnected - reason: ${reason}`);
 	});

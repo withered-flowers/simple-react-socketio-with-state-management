@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import CustomForm from "../components/CustomForm.jsx";
 import { SocketContext } from "../contexts/socket-context";
 
 const MainPage = () => {
@@ -20,6 +21,7 @@ const MainPage = () => {
 			<ul>
 				<li>src/contexts/socket-context-jsx</li>
 				<li>src/views/MainPage.jsx</li>
+				<li>src/components/CustomForm.jsx</li>
 			</ul>
 			<section
 				style={{
@@ -34,7 +36,7 @@ const MainPage = () => {
 					}}
 					onClick={btnHelloWorldOnClickHandler}
 				>
-					Emit (hello-world) - See Server Console after Clicked
+					Emit (hello-world) - Lihat Server Console setelah Klik
 				</button>
 				<button
 					type="button"
@@ -43,7 +45,7 @@ const MainPage = () => {
 					}}
 					onClick={btnHelloResponseOnClickHandler}
 				>
-					Emit (hello-response) - See Client Console after Clicked
+					Emit (hello-response) - Lihat Client Console setelah Klik
 				</button>
 			</section>
 			{stringArg0 && (
@@ -51,6 +53,15 @@ const MainPage = () => {
 					{stringArg0} - len: {stringArg0.length}
 				</p>
 			)}
+			<section
+				style={{
+					paddingTop: "1em",
+					paddingBottom: "1em",
+					width: "50vw",
+				}}
+			>
+				<CustomForm />
+			</section>
 		</>
 	);
 };

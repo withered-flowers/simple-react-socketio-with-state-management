@@ -11,6 +11,8 @@ export const SocketProvider = ({ children }) => {
 
 	// ? State tambahan untuk menerima data dari socket
 	const [stringArg0, setStringArg0] = useState(undefined);
+	const [formResponseDariServer, setFormResponseDariServer] =
+		useState(undefined);
 
 	useEffect(() => {
 		// Socket
@@ -31,6 +33,12 @@ export const SocketProvider = ({ children }) => {
 			setStringArg0(arg0);
 		});
 
+		// ! Note: di sini akan menerima 1 argument dari server
+		socketInitializer.on("form-submission-response", (arg0) => {
+			console.log("Response dari server adalah:", arg0);
+			setFormResponseDariServer(arg0);
+		});
+
 		// Socket to socketState Setter
 		setSocketState(socketInitializer);
 
@@ -43,7 +51,9 @@ export const SocketProvider = ({ children }) => {
 
 	return (
 		// ! Aturannya: Lempar value yang dibutuhkan saja
-		<SocketContext.Provider value={{ socketState, stringArg0 }}>
+		<SocketContext.Provider
+			value={{ socketState, stringArg0, formResponseDariServer }}
+		>
 			{children}
 		</SocketContext.Provider>
 	);
