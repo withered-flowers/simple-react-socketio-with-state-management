@@ -34,6 +34,13 @@ io.on("connection", (socket) => {
 		);
 	});
 
+	socket.on("join-room", (roomId) => {
+		console.log(`User ${socket.id} joined room ${roomId}`);
+		socket.join(roomId);
+
+		socket.to(roomId).emit("user-connected", socket.id);
+	});
+
 	// ! Note: di sini akan menerima 1 argument dari client
 	socket.on("form-submission", (arg0) => {
 		const panjangKata = arg0?.length ?? 0;
