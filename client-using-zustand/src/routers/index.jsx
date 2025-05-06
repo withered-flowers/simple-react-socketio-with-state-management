@@ -1,11 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import MainPage from "../views/MainPage";
 
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <MainPage />,
-	},
-]);
-
-export default router;
+export const BaseRouter = () => {
+	return (
+		<Routes>
+			<Route path="/" element={<MainPage />} />
+		</Routes>
+	);
+};

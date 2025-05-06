@@ -1,14 +1,12 @@
-import { RouterProvider } from "react-router-dom";
-import router from "./routers";
+import { BrowserRouter } from "react-router";
+import { BaseRouter } from "./routers";
 
 import { useEffect } from "react";
 import { useSocketStore } from "./stores";
 
 // ? Di sini kita akan menggunakan useEffect untuk memanggil connection ke socket
 const App = () => {
-	const { internalSocketConnect, internalSocketDisconnect } = useSocketStore(
-		(state) => state,
-	);
+	const { internalSocketConnect, internalSocketDisconnect } = useSocketStore();
 
 	useEffect(() => {
 		internalSocketConnect();
@@ -19,7 +17,11 @@ const App = () => {
 		};
 	}, [internalSocketConnect, internalSocketDisconnect]);
 
-	return <RouterProvider router={router} />;
+	return (
+		<BrowserRouter>
+			<BaseRouter />
+		</BrowserRouter>
+	);
 };
 
 export default App;

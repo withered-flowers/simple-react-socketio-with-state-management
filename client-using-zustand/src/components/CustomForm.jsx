@@ -2,9 +2,7 @@ import { useRef, useState } from "react";
 import { useSocketStore } from "../stores";
 
 const CustomForm = () => {
-	const { socketState, formResponseDariServer } = useSocketStore(
-		(state) => state,
-	);
+	const { socketState, formResponseDariServer } = useSocketStore();
 
 	const formRef = useRef("");
 	const [formValue, setFormValue] = useState("");

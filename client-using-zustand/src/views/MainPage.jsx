@@ -3,7 +3,7 @@ import { useSocketStore } from "../stores/index.js";
 
 const MainPage = () => {
 	// ? Di sini kita akan memanggil "state" yang akan digunakan pada component ini yang disediakan zustand
-	const { socketState, stringArg0 } = useSocketStore((state) => state);
+	const { socketState, stringArg0 } = useSocketStore();
 
 	const btnHelloWorldOnClickHandler = () => {
 		// ? Hanya akan dijalankan bila socketState tidak undefined
